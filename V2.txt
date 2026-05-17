@@ -1,0 +1,93 @@
+html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELEMENT — Architectural Visual Studio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f6f4f0; /* Warm sand ivory background */
+            color: #1c1a17; /* Slate charcoal */
+        }
+        .serif-title {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 0.12em;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f6f4f0;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #dcd7cd;
+            border-radius: 3px;
+        }
+        .fade-in {
+            animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-[#e6dfd3] selection:text-[#1c1a17]"> 
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-500 ease-out opacity-0 pointer-events-none">
+        <div class="bg-[#24211e] text-[#f6f4f0] px-6 py-4 rounded-xl shadow-xl flex items-center space-x-3 border border-[#3a3530]">
+            <svg class="w-5 h-5 text-amber-300 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+            </svg>
+            <span id="toast-message" class="text-xs md:text-sm font-light"></span>
+        </div>
+    </div> 
+
+    <!-- Header Navigation -->
+    <header class="border-b border-[#e6dfd3] bg-white/70 backdrop-blur-md sticky top-0 z-40 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            
+            <!-- Logo Brand -->
+            <div class="flex flex-col">
+                <span class="serif-title text-xl md:text-2xl font-medium tracking-widest text-[#24211e]">ELEMENT</span>
+                <span id="header-subtitle" class="text-[9px] tracking-[0.25em] uppercase font-light text-[#8a8170] mt-0.5">Architectural Visualization Studio</span>
+            </div> 
+
+            <!-- Language Toggle Controls -->
+            <div class="flex items-center space-x-2">
+                <div class="bg-[#ebe6dc] p-1 rounded-full flex items-center shadow-inner relative">
+                    <button id="lang-en" class="text-[10px] md:text-xs font-semibold px-4 py-1.5 rounded-full transition-all duration-300 relative z-10 text-[#1c1a17] bg-white shadow-sm">EN</button>
+                    <button id="lang-es" class="text-[10px] md:text-xs font-semibold px-4 py-1.5 rounded-full transition-all duration-300 relative z-10 text-[#8a8170]">ES</button>
+                </div>
+            </div> 
+
+        </div>
+    </header> 
+
+    <!-- Main Workspace Layout -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 md:px-8 py-8 md:py-12">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+            
+            <!-- Left Panel (Controls and Actions) -->
+            <section class="lg:col-span-5 space-y-6 fade-in">
+                
+                <!-- Main Studio Control Card -->
+                <div class="bg-white border border-[#e6dfd3] p-6 rounded-2xl shadow-sm space-y-6">
+                    <div class="border-b border-[#faf8f5] pb-4">
+                        <span class="text-[10px] tracking-[0.2em] uppercase font-bold text-[#8a8170]" id="badge-label">Input Studio</span>
+                        <h2 class="serif-title text-lg text-[#24211e] mt-1" id="panel-title">Source Blueprint</h2>
+                        <p class="text-xs text-[#8a8170] font-light mt-1" id="panel-desc">Upload an interior photograph. Our engine preserves structural geography while re-imagining perspective in luxury Japandi photography style.</p>
+                    </div> 
+
+                    <!-- Drag & Drop Upload Space -->
+                    <div id="dropzone" class="border-2 border-dashed border-[#d2c9b9] hover:border-[#a39885] rounded-xl p-8 text-center cursor-pointer transition-all bg-[#faf8f5] hover:bg-[#f3f0e8] relative overflow-hidden group">
+                        <input t
